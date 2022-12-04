@@ -140,7 +140,7 @@ public class Program_Toko_Pizza {
             
     }
     
-    public static void Payment() {
+    public static void Payment() { 
         
         System.out.println();
         System.out.println("Total Belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total)) +'\n');
@@ -149,23 +149,23 @@ public class Program_Toko_Pizza {
         member = input.next();
         
         if(member.equalsIgnoreCase("Y")) {
-            if (total >= 500000) {
-            disc = 0.1;
+            if (total >= 1500000) {
+            disc = 0.20;
             discount = disc*total;
             
             System.out.println();
-            System.out.println("Selamat anda mendapatkan diskon sebesar 10%!  : Rp. " +(String.format("%,.2f", discount)));
+            System.out.println("Selamat anda mendapatkan diskon sebesar 20%!  : Rp. " +(String.format("%,.2f", discount)));
             total_akhir = total-(total*disc);
             
             System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
             Final_Payment ();
             
-            }else if (total > 1000000){
-            disc = 0.15;
+            }else if (total > 500000){
+            disc = 0.10;
             discount = disc*total;
             
             System.out.println();
-            System.out.println("Selamat anda mendapatkan diskon sebesar 15%!  : Rp. " +(String.format("%,.2f", discount)));
+            System.out.println("Selamat anda mendapatkan diskon sebesar 10%!  : Rp. " +(String.format("%,.2f", discount)));
             total_akhir = total-(total*disc);
             
             System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
