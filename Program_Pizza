@@ -1,13 +1,13 @@
-package belajar_2;
+package belajar;
 import java.util.Scanner;
 
 
 public class Program_Toko_Pizza {
     
-    public static Scanner input = new Scanner(System.in);
-    static int kode_pizza, jml_pizza;
-    static double harga, total, total_akhir, disc, discount, bayar, kembalian;
-    static String add, member;
+    static Scanner input = new Scanner(System.in);
+    static int kode_pizza, jml_pizza, angka_disc;
+    static double harga, total, total_akhir, disc, total_disc, bayar, kembalian;
+    static String tambah, member;
     static String[] pizza = {
         "American Frankie Sausage",
         "Mexican Beef Nachos Pizza",
@@ -16,7 +16,7 @@ public class Program_Toko_Pizza {
         "Ultimate Beef Blast",
         "Indonesian Beef Rendang Pizza"
     };
-            
+    
     
     public static void Header() {
         
@@ -36,7 +36,7 @@ public class Program_Toko_Pizza {
         
     }
     
-    public static void Order_System() {
+    public static void OrderSystem() {
         
         System.out.println();
         System.out.print("Silahkan masukkan kode Pizza yang ingin anda beli : ");
@@ -46,104 +46,85 @@ public class Program_Toko_Pizza {
             case 1 :
                 System.out.println();
                 System.out.println("Anda memilih menu : "+pizza[0] +" (Rp. 120.000.-)");
-                System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
-                
-                jml_pizza = input.nextInt();
                 harga = 120000;
-                total = total + (jml_pizza*harga);
                 
-                Re_Order();
+                AskQuantity();
                 break;
                 
                 
             case 2 :
                 System.out.println();
                 System.out.println("Anda memilih menu : "+pizza[1] +" (Rp. 135.000.-)");
-                System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
-                
-                jml_pizza = input.nextInt();
                 harga = 135000;
-                total = total + (jml_pizza*harga);
                 
-                Re_Order();
+                AskQuantity();
                 break;
                 
                 
             case 3 :
                 System.out.println();
                 System.out.println("Anda memilih menu : "+pizza[2] +" (Rp. 125.000.-)");
-                System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
-                
-                jml_pizza = input.nextInt();
                 harga = 125000;
-                total = total + (jml_pizza*harga);
                 
-                Re_Order();
+                AskQuantity();
                 break;
                 
                 
             case 4 :
                 System.out.println();
                 System.out.println("Anda memilih menu : "+pizza[3] +" (Rp. 115.000.-)");
-                System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
-                
-                jml_pizza = input.nextInt();
                 harga = 115000;
-                total = total + (jml_pizza*harga);
                 
-                Re_Order();
+                AskQuantity();
                 break;
                 
             case 5 :
                 System.out.println();
                 System.out.println("Anda memilih menu : "+pizza[4] +" (Rp. 155.000.-)");
-                System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
-                
-                jml_pizza = input.nextInt();
                 harga = 155000;
-                total = total + (jml_pizza*harga);
                 
-                Re_Order();
+                AskQuantity();
                 break;
                 
                 
             case 6 :
                 System.out.println();
                 System.out.println("Anda memilih menu : "+pizza[5] +" (Rp. 140.000.-)");
-                System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
-                
-                jml_pizza = input.nextInt();
                 harga = 140000;
-                total = total + (jml_pizza*harga);
                 
-                Re_Order();
+                AskQuantity();
                 break;
+
                 
             default :
                 System.out.println("Mohon masukkan kode pizza yang benar !");
-                Order_System ();
+                OrderSystem ();
                 
         }
     }
     
-    public static void Re_Order() {
+    public static void AskQuantity() {
+        System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
+        
+        jml_pizza = input.nextInt();
+        total = total + (jml_pizza*harga);
         
         System.out.println("Apakah anda ingin menambah pesanan anda ?");
         Validation ();
-        add = input.next();
         
-        if(add.equalsIgnoreCase("Y")) {
-            Order_System();
+        tambah = input.next();
+        
+        if(tambah.equalsIgnoreCase("Y")) {
+            OrderSystem();
         }else {
             Payment ();
         }
-            
     }
     
     public static void Payment() { 
         
         System.out.println();
-        System.out.println("Total Belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total)) +'\n');
+        System.out.println("Total Belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total)));
         System.out.println("Apakah anda memiliki kartu member ?");
         Validation ();
         member = input.next();
@@ -151,51 +132,42 @@ public class Program_Toko_Pizza {
         if(member.equalsIgnoreCase("Y")) {
             if (total >= 1500000) {
             disc = 0.20;
-            discount = disc*total;
-            
-            System.out.println();
-            System.out.println("Selamat anda mendapatkan diskon sebesar 20%!  : Rp. " +(String.format("%,.2f", discount)));
-            total_akhir = total-(total*disc);
-            
-            System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
-            Final_Payment ();
+            MemberDisc();
             
             }else if (total > 500000){
             disc = 0.10;
-            discount = disc*total;
-            
-            System.out.println();
-            System.out.println("Selamat anda mendapatkan diskon sebesar 10%!  : Rp. " +(String.format("%,.2f", discount)));
-            total_akhir = total-(total*disc);
-            
-            System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
-            Final_Payment ();
+            MemberDisc();
             
             }else {
             disc = 0.05;
-            discount = disc*total;
-            
-            System.out.println();
-            System.out.println("Selamat anda mendapatkan diskon sebesar 5%!  : Rp. " +(String.format("%,.2f", discount)));
-            total_akhir = total-(total*disc);
-            
-            System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
-            Final_Payment ();
+            MemberDisc();
             }
             
             
         } else {
             disc = 0;
-            discount = disc*total;
+            total_disc = disc*total;
             total_akhir = total-(total*disc);
             
+            System.out.println();
             System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
-            Final_Payment ();
+            FinalPayment ();
         }
         
     }
+
+    public static void MemberDisc() {
+        total_disc = disc*total;
+        angka_disc = (int) (disc*100);
+        total_akhir = total-(total*disc);
+        
+        System.out.println();
+        System.out.println("Selamat anda mendapatkan diskon sebesar " +angka_disc +" %!  : Rp. " +(String.format("%,.2f", total_disc)));
+        System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
+        FinalPayment ();
+    }
     
-    public static void Final_Payment() {
+    public static void FinalPayment() {
         
         System.out.print("Silahkan masukkan jumlah bayar anda : Rp. ");
         bayar = input.nextDouble();
@@ -203,11 +175,12 @@ public class Program_Toko_Pizza {
             if(bayar >= total_akhir){
                 kembalian = bayar - total_akhir;
                 System.out.println("Kembalian anda adalah sebesar : Rp. " +(String.format("%,.2f", kembalian)));
+                System.out.println();
                 System.out.println("Terimakasih sudah berbelanja di toko kami !");
                 }
             else {
                 System.out.println("Maaf, jumlah pembayaran anda tidak cukup!" +'\n');
-                Final_Payment ();
+                FinalPayment ();
                 }
     }
     
@@ -215,11 +188,10 @@ public class Program_Toko_Pizza {
         System.out.print("Tekan Y untuk ya, Tekan T untuk tidak : ");
     }
     
-    
+
     public static void main (String[] args) {
-        
         Header();
-        Order_System();
+        OrderSystem();
         
     }
     
