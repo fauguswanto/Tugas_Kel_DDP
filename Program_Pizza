@@ -5,18 +5,37 @@ import java.util.Scanner;
 public class Program_Toko_Pizza {
     
     static Scanner input = new Scanner(System.in);
-    static int kode_pizza, jml_pizza, angka_disc;
-    static double harga, total, total_akhir, disc, total_disc, bayar, kembalian;
-    static String tambah, member;
-    static String[] pizza = {
+
+    //nama setiap pizza
+    static String[]pizza = {
         "American Frankie Sausage",
-        "Mexican Beef Nachos Pizza",
+        "Mexican Nachos Pizza",
         "NewYorker Alfredo Beef",
         "Ultimate Cheese Melt",
         "Ultimate Beef Blast",
-        "Indonesian Beef Rendang Pizza"
+        "Indonesian Rendang Pizza"
     };
     
+    //harga setiap pizza berdasarkan urutan nama
+    static Double[]harga = {
+        120000.00, 135000.00, 125000.00,
+        115000.00, 150000.00, 140000.00
+    };
+
+    //syarat total belanja untuk mendapatkan discount
+    static int []syarat_disc = {1500000, 1000000};
+
+    //discount member berdasarkan total belanja
+    static Double[]disc_mem = {0.20, 0.10};
+    
+    //method untuk formatting angka
+    static String amountFormat(double var) {
+        return String.format("%,.2f",var);
+    }
+
+    static int kode_pizza, jml_pizza, angka_disc;
+    static double harga_pizza, total, total_akhir, disc, total_disc, bayar, kembalian;
+    static String tambah, member;
     
     public static void Header() {
         
@@ -44,54 +63,55 @@ public class Program_Toko_Pizza {
         
         switch (kode_pizza) {
             case 1 :
+                harga_pizza = harga[0];
                 System.out.println();
-                System.out.println("Anda memilih menu : "+pizza[0] +" (Rp. 120.000.-)");
-                harga = 120000;
-                
+                System.out.println("Anda memilih menu : ");
+                System.out.println(pizza[0] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
                 
                 
             case 2 :
+                harga_pizza = harga[1];
                 System.out.println();
-                System.out.println("Anda memilih menu : "+pizza[1] +" (Rp. 135.000.-)");
-                harga = 135000;
-                
+                System.out.println("Anda memilih menu : ");
+                System.out.println(pizza[1] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
                 
                 
             case 3 :
+                harga_pizza = harga[2];
                 System.out.println();
-                System.out.println("Anda memilih menu : "+pizza[2] +" (Rp. 125.000.-)");
-                harga = 125000;
-                
+                System.out.println("Anda memilih menu : ");
+                System.out.println(pizza[2] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
                 
                 
             case 4 :
+                harga_pizza = harga[3];
                 System.out.println();
-                System.out.println("Anda memilih menu : "+pizza[3] +" (Rp. 115.000.-)");
-                harga = 115000;
-                
+                System.out.println("Anda memilih menu : ");
+                System.out.println(pizza[3] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
                 
-            case 5 :
-                System.out.println();
-                System.out.println("Anda memilih menu : "+pizza[4] +" (Rp. 155.000.-)");
-                harga = 155000;
                 
+            case 5 :
+                harga_pizza = harga[4];
+                System.out.println();
+                System.out.println("Anda memilih menu : ");
+                System.out.println(pizza[4] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
                 
                 
             case 6 :
+                harga_pizza = harga[5];
                 System.out.println();
-                System.out.println("Anda memilih menu : "+pizza[5] +" (Rp. 140.000.-)");
-                harga = 140000;
-                
+                System.out.println("Anda memilih menu : ");
+                System.out.println(pizza[5] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
 
@@ -104,10 +124,11 @@ public class Program_Toko_Pizza {
     }
     
     public static void AskQuantity() {
+        System.out.println();
         System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
         
         jml_pizza = input.nextInt();
-        total = total + (jml_pizza*harga);
+        total = total + (jml_pizza*harga_pizza);
         
         System.out.println("Apakah anda ingin menambah pesanan anda ?");
         Validation ();
@@ -124,18 +145,18 @@ public class Program_Toko_Pizza {
     public static void Payment() { 
         
         System.out.println();
-        System.out.println("Total Belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total)));
+        System.out.println("Total Belanja anda adalah sebesar : Rp. " +amountFormat(total));
         System.out.println("Apakah anda memiliki kartu member ?");
         Validation ();
         member = input.next();
         
         if(member.equalsIgnoreCase("Y")) {
-            if (total >= 1500000) {
-            disc = 0.20;
+            if (total >= syarat_disc[0]) {
+            disc = disc_mem[0];
             MemberDisc();
             
-            }else if (total > 500000){
-            disc = 0.10;
+            }else if (total > syarat_disc[1]){
+            disc = disc_mem[1];
             MemberDisc();
             
             }else {
@@ -150,7 +171,7 @@ public class Program_Toko_Pizza {
             total_akhir = total-(total*disc);
             
             System.out.println();
-            System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
+            System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +amountFormat(total_akhir));
             FinalPayment ();
         }
         
@@ -162,8 +183,8 @@ public class Program_Toko_Pizza {
         total_akhir = total-(total*disc);
         
         System.out.println();
-        System.out.println("Selamat anda mendapatkan diskon sebesar " +angka_disc +" %!  : Rp. " +(String.format("%,.2f", total_disc)));
-        System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +(String.format("%,.2f", total_akhir)));
+        System.out.println("Selamat anda mendapatkan diskon sebesar " +angka_disc +"% !  : Rp. " +amountFormat(total_disc));
+        System.out.println("Total akhir belanja anda adalah sebesar : Rp. " +amountFormat(total_akhir));
         FinalPayment ();
     }
     
@@ -174,7 +195,7 @@ public class Program_Toko_Pizza {
             
             if(bayar >= total_akhir){
                 kembalian = bayar - total_akhir;
-                System.out.println("Kembalian anda adalah sebesar : Rp. " +(String.format("%,.2f", kembalian)));
+                System.out.println("Kembalian anda adalah sebesar : Rp. " +amountFormat(kembalian));
                 System.out.println();
                 System.out.println("Terimakasih sudah berbelanja di toko kami !");
                 }
