@@ -196,7 +196,5 @@ public class Program_Toko_Pizza {
     public static void main (String[] args) {
         Header();
         OrderSystem();
-        
     }
-    
 }
