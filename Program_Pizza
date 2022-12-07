@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Program_Toko_Pizza {
     static Scanner input = new Scanner(System.in);
+    static int kode_pizza, jml_pizza, angka_disc;
+    static double harga_pizza, total, total_akhir, disc, total_disc, bayar, kembalian;
+    static String tambah, member;
 
     //nama setiap pizza
     static String[] pizza = {
@@ -26,11 +29,6 @@ public class Program_Toko_Pizza {
     static String amountFormat(double var) {
         return String.format("%,.2f",var);
     }
-
-    //deklarasi variabel
-    static int kode_pizza, jml_pizza, angka_disc;
-    static double harga_pizza, total, total_akhir, disc, total_disc, bayar, kembalian;
-    static String tambah, member;
     
 
     //display menu pizza yang tersedia
