@@ -63,7 +63,6 @@ public class Program_Toko_Pizza {
                 AskQuantity();
                 break;
                 
-                
             case 2 :
                 harga_pizza = harga[1];
                 System.out.println();
@@ -71,7 +70,6 @@ public class Program_Toko_Pizza {
                 System.out.println(pizza[1] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
-                
                 
             case 3 :
                 harga_pizza = harga[2];
@@ -81,7 +79,6 @@ public class Program_Toko_Pizza {
                 AskQuantity();
                 break;
                 
-                
             case 4 :
                 harga_pizza = harga[3];
                 System.out.println();
@@ -89,7 +86,6 @@ public class Program_Toko_Pizza {
                 System.out.println(pizza[3] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
-                
                 
             case 5 :
                 harga_pizza = harga[4];
@@ -99,7 +95,6 @@ public class Program_Toko_Pizza {
                 AskQuantity();
                 break;
                 
-                
             case 6 :
                 harga_pizza = harga[5];
                 System.out.println();
@@ -107,7 +102,6 @@ public class Program_Toko_Pizza {
                 System.out.println(pizza[5] +", harga satuan : Rp. " +amountFormat(harga_pizza));
                 AskQuantity();
                 break;
-
                 
             default :
                 System.out.println("Mohon masukkan kode pizza yang benar !");
