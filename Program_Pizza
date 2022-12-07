@@ -5,32 +5,35 @@ public class Program_Toko_Pizza {
     static Scanner input = new Scanner(System.in);
 
     //nama setiap pizza
-    static String[]pizza = {
+    static String[] pizza = {
         "American Frankie", "Mexican Nachos", "Newyorker Alfredo",
         "Ultimate Cheese", "Beef Blast", "Indonesian Rendang"
     };
     
     //harga setiap pizza berdasarkan urutan nama
-    static Double[]harga = {
+    static Double[] harga = {
         120000.00, 135000.00, 125000.00,
         115000.00, 150000.00, 140000.00
     };
 
     //syarat total belanja untuk mendapatkan discount
-    static int []syarat_disc = {1500000, 1000000};
+    static int[] syarat_disc = {1500000, 1000000};
 
     //discount member berdasarkan total belanja
-    static Double[]disc_mem = {0.20, 0.10};
+    static Double[] disc_mem = {0.20, 0.10};
     
     //method untuk formatting angka
     static String amountFormat(double var) {
         return String.format("%,.2f",var);
     }
 
+    //deklarasi variabel
     static int kode_pizza, jml_pizza, angka_disc;
     static double harga_pizza, total, total_akhir, disc, total_disc, bayar, kembalian;
     static String tambah, member;
     
+
+    //display menu pizza yang tersedia
     public static void Header() {
         System.out.println("------------------------------");
         System.out.println("APLIKASI TOKO PIZZA DDP");
@@ -47,6 +50,8 @@ public class Program_Toko_Pizza {
         System.out.println();  
     }
     
+
+    //method untuk take input dari user mengenai jenis pizza yang ingin mereka beli
     public static void OrderSystem() {
         System.out.println();
         System.out.print("Silahkan masukkan kode Pizza yang ingin anda beli : ");
@@ -108,6 +113,11 @@ public class Program_Toko_Pizza {
         }
     }
     
+
+    /*
+     * method untuk menanyakan jumlah pizza yang ingin di beli
+     * dan untuk menanyakan apakah user ingin menambah pembelian atau tidak
+    */
     public static void AskQuantity() {
         System.out.println();
         System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
@@ -127,6 +137,12 @@ public class Program_Toko_Pizza {
         }
     }
     
+
+    /*
+     * method untuk menampilkan total belanja, 
+     * dan untuk memberikan diskon berdasarkan ada/tidak adanya kartu member
+     * serta diskon berdasarkan jumlah belanja user
+    */
     public static void Payment() {
         System.out.println();
         System.out.println("Total Belanja anda adalah sebesar : Rp. " +amountFormat(total));
@@ -161,6 +177,11 @@ public class Program_Toko_Pizza {
         
     }
 
+    
+    /*
+     * method untuk menghitung, dan menampilkan total diskon member
+     * dan untuk menghitung total akhir belanja setelah dipotong diskon
+     */
     public static void MemberDisc() {
         total_disc = disc*total;
         angka_disc = (int) (disc*100);
@@ -172,6 +193,8 @@ public class Program_Toko_Pizza {
         FinalPayment ();
     }
     
+    
+    //method untuk user input pembayaran dan menghitung kembalian yang di terima user
     public static void FinalPayment() {
         System.out.print("Silahkan masukkan jumlah bayar anda : Rp. ");
         bayar = input.nextDouble();
@@ -188,6 +211,8 @@ public class Program_Toko_Pizza {
                 }
     }
     
+    
+    //method untuk validasi / prompt
     public static void Validation() {
         System.out.print("Tekan Y untuk ya, Tekan T untuk tidak : ");
     }
