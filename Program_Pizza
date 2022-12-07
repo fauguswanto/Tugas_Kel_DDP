@@ -8,12 +8,8 @@ public class Program_Toko_Pizza {
 
     //nama setiap pizza
     static String[]pizza = {
-        "American Frankie Sausage",
-        "Mexican Nachos Pizza",
-        "NewYorker Alfredo Beef",
-        "Ultimate Cheese Melt",
-        "Ultimate Beef Blast",
-        "Indonesian Rendang Pizza"
+        "American Frankie", "Mexican Nachos", "Newyorker Alfredo",
+        "Ultimate Cheese", "Beef Blast", "Indonesian Rendang"
     };
     
     //harga setiap pizza berdasarkan urutan nama
