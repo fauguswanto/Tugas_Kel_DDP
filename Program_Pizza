@@ -34,7 +34,6 @@ public class Program_Toko_Pizza {
     static String tambah, member;
     
     public static void Header() {
-        
         System.out.println("------------------------------");
         System.out.println("APLIKASI TOKO PIZZA DDP");
         System.out.println("------------------------------");
@@ -47,12 +46,10 @@ public class Program_Toko_Pizza {
         System.out.println("4. " +pizza[3]);
         System.out.println("5. " +pizza[4]);
         System.out.println("6. " +pizza[5]);
-        System.out.println();
-        
+        System.out.println();  
     }
     
     public static void OrderSystem() {
-        
         System.out.println();
         System.out.print("Silahkan masukkan kode Pizza yang ingin anda beli : ");
         kode_pizza = input.nextInt();
@@ -138,8 +135,7 @@ public class Program_Toko_Pizza {
         }
     }
     
-    public static void Payment() { 
-        
+    public static void Payment() {
         System.out.println();
         System.out.println("Total Belanja anda adalah sebesar : Rp. " +amountFormat(total));
         System.out.println("Apakah anda memiliki kartu member ?");
@@ -185,7 +181,6 @@ public class Program_Toko_Pizza {
     }
     
     public static void FinalPayment() {
-        
         System.out.print("Silahkan masukkan jumlah bayar anda : Rp. ");
         bayar = input.nextDouble();
             
