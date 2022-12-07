@@ -1,9 +1,7 @@
 package belajar;
 import java.util.Scanner;
 
-
 public class Program_Toko_Pizza {
-    
     static Scanner input = new Scanner(System.in);
 
     //nama setiap pizza
