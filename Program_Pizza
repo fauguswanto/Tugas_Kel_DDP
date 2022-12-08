@@ -31,8 +31,7 @@ public class Program_Toko_Pizza {
     }
     
 
-    //display menu pizza yang tersedia
-    public static void Header() {
+    public static void Menu() {
         System.out.println("------------------------------");
         System.out.println("APLIKASI TOKO PIZZA DDP");
         System.out.println("------------------------------");
@@ -47,9 +46,7 @@ public class Program_Toko_Pizza {
         System.out.println("6. " +pizza[5]);
         System.out.println();  
     }
-    
 
-    //method untuk take input dari user mengenai jenis pizza yang ingin mereka beli
     public static void OrderSystem() {
         System.out.println();
         System.out.print("Silahkan masukkan kode Pizza yang ingin anda beli : ");
@@ -61,7 +58,8 @@ public class Program_Toko_Pizza {
                 System.out.println();
                 System.out.println("Anda memilih menu : ");
                 System.out.println(pizza[0] +", harga satuan : Rp. " +amountFormat(harga_pizza));
-                AskQuantity();
+                Quantity();
+                Reorder();
                 break;
                 
             case 2 :
@@ -69,7 +67,8 @@ public class Program_Toko_Pizza {
                 System.out.println();
                 System.out.println("Anda memilih menu : ");
                 System.out.println(pizza[1] +", harga satuan : Rp. " +amountFormat(harga_pizza));
-                AskQuantity();
+                Quantity();
+                Reorder();
                 break;
                 
             case 3 :
@@ -77,7 +76,8 @@ public class Program_Toko_Pizza {
                 System.out.println();
                 System.out.println("Anda memilih menu : ");
                 System.out.println(pizza[2] +", harga satuan : Rp. " +amountFormat(harga_pizza));
-                AskQuantity();
+                Quantity();
+                Reorder();
                 break;
                 
             case 4 :
@@ -85,7 +85,8 @@ public class Program_Toko_Pizza {
                 System.out.println();
                 System.out.println("Anda memilih menu : ");
                 System.out.println(pizza[3] +", harga satuan : Rp. " +amountFormat(harga_pizza));
-                AskQuantity();
+                Quantity();
+                Reorder();
                 break;
                 
             case 5 :
@@ -93,7 +94,8 @@ public class Program_Toko_Pizza {
                 System.out.println();
                 System.out.println("Anda memilih menu : ");
                 System.out.println(pizza[4] +", harga satuan : Rp. " +amountFormat(harga_pizza));
-                AskQuantity();
+                Quantity();
+                Reorder();
                 break;
                 
             case 6 :
@@ -101,7 +103,8 @@ public class Program_Toko_Pizza {
                 System.out.println();
                 System.out.println("Anda memilih menu : ");
                 System.out.println(pizza[5] +", harga satuan : Rp. " +amountFormat(harga_pizza));
-                AskQuantity();
+                Quantity();
+                Reorder();
                 break;
                 
             default :
@@ -111,21 +114,17 @@ public class Program_Toko_Pizza {
         }
     }
     
-
-    /*
-     * method untuk menanyakan jumlah pizza yang ingin di beli
-     * dan untuk menanyakan apakah user ingin menambah pembelian atau tidak
-    */
-    public static void AskQuantity() {
+    public static void Quantity() {
         System.out.println();
         System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
         
         jml_pizza = input.nextInt();
         total = total + (jml_pizza*harga_pizza);
-        
+    }
+
+    public static void Reorder() {
         System.out.println("Apakah anda ingin menambah pesanan anda ?");
         Validation ();
-        
         tambah = input.next();
         
         if(tambah.equalsIgnoreCase("Y")) {
@@ -134,13 +133,7 @@ public class Program_Toko_Pizza {
             Payment ();
         }
     }
-    
 
-    /*
-     * method untuk menampilkan total belanja, 
-     * dan untuk memberikan diskon berdasarkan ada/tidak adanya kartu member
-     * serta diskon berdasarkan jumlah belanja user
-    */
     public static void Payment() {
         System.out.println();
         System.out.println("Total Belanja anda adalah sebesar : Rp. " +amountFormat(total));
@@ -174,12 +167,7 @@ public class Program_Toko_Pizza {
         }
         
     }
-
     
-    /*
-     * method untuk menghitung, dan menampilkan total diskon member
-     * dan untuk menghitung total akhir belanja setelah dipotong diskon
-     */
     public static void MemberDisc() {
         total_disc = disc*total;
         angka_disc = (int) (disc*100);
@@ -191,8 +179,6 @@ public class Program_Toko_Pizza {
         FinalPayment ();
     }
     
-    
-    //method untuk user input pembayaran dan menghitung kembalian yang di terima user
     public static void FinalPayment() {
         System.out.print("Silahkan masukkan jumlah bayar anda : Rp. ");
         bayar = input.nextDouble();
@@ -209,15 +195,12 @@ public class Program_Toko_Pizza {
                 }
     }
     
-    
-    //method untuk validasi / prompt
     public static void Validation() {
         System.out.print("Tekan Y untuk ya, Tekan T untuk tidak : ");
     }
     
-
     public static void main (String[] args) {
-        Header();
+        Menu();
         OrderSystem();
     }
 }
