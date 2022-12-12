@@ -1,11 +1,10 @@
-package belajar;
 import java.util.Scanner;
 
 public class Program_Toko_Pizza {
     static Scanner input = new Scanner(System.in);
     static int kode_pizza, jml_pizza, angka_disc;
     static double harga_pizza, total, total_akhir, disc, total_disc, bayar, kembalian;
-    static String tambah, member;
+    static String tambah, member, ukuran;
 
     //nama setiap pizza
     static String[] pizza = {
@@ -18,6 +17,9 @@ public class Program_Toko_Pizza {
         120000.00, 135000.00, 125000.00,
         115000.00, 150000.00, 140000.00
     };
+
+    //harga tambahan untuk setiap size pizza
+    static double[] harga_ukuran = {0.00,30000,50000};
 
     //syarat total belanja untuk mendapatkan discount
     static int[] syarat_disc = {1500000, 500000};
@@ -56,8 +58,8 @@ public class Program_Toko_Pizza {
             case 1 :
                 harga_pizza = harga[0];
                 System.out.println();
-                System.out.println("Menu yang anda pilih adalah : ");
-                System.out.println(pizza[0] +", harga satuan : Rp. " +amountFormat(harga_pizza));
+                System.out.println("Menu yang anda pilih adalah : " +pizza[0]);
+                askSize();
                 quantity();
                 reorder();
                 break;
@@ -65,8 +67,8 @@ public class Program_Toko_Pizza {
             case 2 :
                 harga_pizza = harga[1];
                 System.out.println();
-                System.out.println("Menu yang anda pilih adalah : ");
-                System.out.println(pizza[1] +", harga satuan : Rp. " +amountFormat(harga_pizza));
+                System.out.println("Menu yang anda pilih adalah : " +pizza[1]);
+                askSize();
                 quantity();
                 reorder();
                 break;
@@ -74,8 +76,8 @@ public class Program_Toko_Pizza {
             case 3 :
                 harga_pizza = harga[2];
                 System.out.println();
-                System.out.println("Menu yang anda pilih adalah : ");
-                System.out.println(pizza[2] +", harga satuan : Rp. " +amountFormat(harga_pizza));
+                System.out.println("Menu yang anda pilih adalah : " +pizza[2]);
+                askSize();
                 quantity();
                 reorder();
                 break;
@@ -83,8 +85,8 @@ public class Program_Toko_Pizza {
             case 4 :
                 harga_pizza = harga[3];
                 System.out.println();
-                System.out.println("Menu yang anda pilih adalah : ");
-                System.out.println(pizza[3] +", harga satuan : Rp. " +amountFormat(harga_pizza));
+                System.out.println("Menu yang anda pilih adalah : " +pizza[3]);
+                askSize();
                 quantity();
                 reorder();
                 break;
@@ -92,8 +94,8 @@ public class Program_Toko_Pizza {
             case 5 :
                 harga_pizza = harga[4];
                 System.out.println();
-                System.out.println("Menu yang anda pilih adalah : ");
-                System.out.println(pizza[4] +", harga satuan : Rp. " +amountFormat(harga_pizza));
+                System.out.println("Menu yang anda pilih adalah : " +pizza[4]);
+                askSize();
                 quantity();
                 reorder();
                 break;
@@ -101,8 +103,8 @@ public class Program_Toko_Pizza {
             case 6 :
                 harga_pizza = harga[5];
                 System.out.println();
-                System.out.println("Menu yang anda pilih adalah : ");
-                System.out.println(pizza[5] +", harga satuan : Rp. " +amountFormat(harga_pizza));
+                System.out.println("Menu yang anda pilih adalah : " +pizza[5]);
+                askSize();
                 quantity();
                 reorder();
                 break;
@@ -113,6 +115,37 @@ public class Program_Toko_Pizza {
         }
     }
     
+    public static void askSize() {
+        System.out.println("Harga ukuran S : Rp. " +amountFormat(harga_pizza+ harga_ukuran[0]));
+        System.out.println("Harga ukuran M : Rp. " +amountFormat(harga_pizza+ harga_ukuran[1]));
+        System.out.println("Harga ukuran L : Rp. " +amountFormat(harga_pizza+ harga_ukuran[2]));
+        System.out.println(); 
+        System.out.println("Silahkan pilih ukuran pizza anda : ");
+        System.out.print("Tekan S untuk Small, M untuk Medium, L untuk Large : ");
+        ukuran = input.next();
+
+         switch (ukuran.toUpperCase()) {
+            case "S" :
+                harga_pizza = 
+                harga_pizza + harga_ukuran[0];
+                break;
+            
+            case "M" :
+                harga_pizza = 
+                harga_pizza + harga_ukuran[1];
+                break;
+
+            case "L" :
+                harga_pizza = 
+                harga_pizza + harga_ukuran[2];
+                break;
+
+            default :
+                System.out.println("Mohon masukkan ukuran pizza yang benar !");
+                askSize();
+            }
+    }
+
     public static void quantity() {
         System.out.println();
         System.out.print("Berapa banyak Pizza yang ingin anda beli : ");
@@ -145,7 +178,7 @@ public class Program_Toko_Pizza {
             disc = disc_mem[0];
             memberDisc();
             
-            }else if (total > syarat_disc[1]){
+            }else if (total > syarat_disc[1]) {
             disc = disc_mem[1];
             memberDisc();
             
